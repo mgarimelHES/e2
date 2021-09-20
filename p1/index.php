@@ -1,7 +1,7 @@
 <?php
 
- echo "leverage inlcude"; 
+ //echo "leverage inlcude"; 
 # include view
  include 'index-view.php';
- echo "done include";
+ //echo "done include";
  ?>
