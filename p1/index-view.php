@@ -9,7 +9,7 @@
 
 <body>
     <h1>Project 1</h1>
-    <h2>Mechanics of the Game</h2>
+    <h2>Mechanics of the Game - Rock, Paper & Scissors</h2>
     <ul>
         <li>...</li>
     </ul>

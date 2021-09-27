@@ -16,9 +16,8 @@ $computerCards = [];
     }
     else
     {
- 
-    $computerCards[] = $value;
-}
+           $computerCards[] = $value;
+    }
     
 }
 # Verify results
