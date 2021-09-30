@@ -1,15 +1,14 @@
 <?php
 
- //echo "leverage inlcude"; 
 # include view
- include 'index-view.php';
- //echo "done include";
- # Define two arrays for the moves of both players
- $a=array("Rock","Paper","Scissors");
- $b=array("Rock","Paper","Scissors");
+ require 'index-view.php';
+#
+# Define two arrays for the moves of both players - Player1 & Player2
+$playerA=array("Rock","Paper","Scissors");
+$playerB=array("Rock","Paper","Scissors");
 # Generate a randon key for both players to pick their move
-$player1 = $a[rand(0,2)];
-$player2= $b[rand(0,2)];
+$playerA_move = $playerA[rand(0,2)];
+$playerB_move = $playerB[rand(0,2)];
 /*
 Follow these game rules -
 -
@@ -24,83 +23,82 @@ Follow these game rules -
 # Under Construction code for the business logic of the game
 //
 # Set initial values for Game winner boolean type
-/*
 
-!!!!  U N D E R   C O N S T R U C T I O N   !!!!!
-$player1Wins = false;
-$player2Wins = false;
+$playerA_Wins = false;
+$playerB_Wins = false;
+$winner = "";
 #
 # Game Logic begins with check if their moves are equal, then it will be a 'tie'
 #
-if ($player1 == $player2)
+if ($playerA_move == $playerB_move)
 {
 echo "tied \n", PHP_EOL;
-echo $player1, PHP_EOL;
-echo $player2, PHP_EOL;
+echo $playerA_move, PHP_EOL;
+echo $playerB_move, PHP_EOL;
 }
 else {
-    echo $player1, PHP_EOL;
-    echo $player2, PHP_EOL;
+    echo $playerA_move, PHP_EOL;
+    echo $playerB_move, PHP_EOL;
     echo "no match!!", PHP_EOL;
-# player1 move is 'Rock' and Player2 move is 'Scissors'
-    if (($player1 == 'Rock') && ($player2 == 'Scissors')) {
-        echo "Player1 move is Rock \n";
-        echo "Player2 move is Scissors \n";
-        echo "Player 1 wins \n";
-        echo "Player 2 loses \n";
-        $player1Wins = true;
-# player1 move is 'Rock' and Player2 move is 'Paper'
-    } elseif (($player1 == 'Rock') && ($player2 == 'Paper')) {
-        echo "Player1 move is Rock \n";
-        echo "Player2 move is Paper \n";
-        echo "Player 1 loses \n";
-        echo "Player 2 wins \n";
-        $player2Wins = true;
-# Player1 move is 'Scissors' and Player2 move is 'Rock'
-    } elseif (($player1 == 'Scissors') && ($player2  == 'Rock') ) {
-        echo "Player1 move is Scissors \n";
-        echo "Player2 move is Rock \n";
-        echo "player 1 loses \n";
-        echo "player 2 wins \n";
-        $player2Wins = true;
-# Player1 move is 'Scissors' and Player2 move is 'Paper'
-    } elseif (($player1 == 'Scissors') && ($player2  == 'Paper') ) {
-        echo "Player1 move is Scissors \n";
-        echo "Player2 move is Paper \n";
-        echo "player 1 wins \n";
-        echo "player 2 loses \n";
-        $player1Wins = true;
-# Player1 move is 'Paper' and Player2 move is 'Rock'
-    } elseif (($player1 == 'Paper') && ($player2  == 'Rock') ) {
-        echo "Player1 move is Paper \n";
-        echo "Player2 move is Rock \n";
-        echo "player 1 Wins \n";
-        $player1Wins = true;
-        echo "player 2 Loses \n";
-# Player1 move is 'Paper' and Player2 move is 'Scissors'
-    } elseif (($player1 == 'Paper') && ($player2  == 'Scissors') ) {
-        echo "Player1 move is Paper \n";
-        echo "Player2 move is Scissors \n";
-        echo "player 1 loses \n";
-        echo "player 2 wins \n";
-        $player2Wins = true;
+# playerA move is 'Rock' and PlayerB move is 'Scissors'
+    if (($playerA_move == 'Rock') && ($playerB_move == 'Scissors')) {
+        echo "PlayerA move is Rock \n";
+        echo "PlayerB move is Scissors \n";
+        echo "Player A wins \n";
+        echo "Player B loses \n";
+        $playerA_Wins = true;
+# playerA move is 'Rock' and PlayerB move is 'Paper'
+    } elseif (($playerA_move == 'Rock') && ($playerB_move == 'Paper')) {
+        echo "PlayerA move is Rock \n";
+        echo "PlayerB move is Paper \n";
+        echo "Player A loses \n";
+        echo "Player B wins \n";
+        $playerB_Wins = true;
+# PlayerA move is 'Scissors' and PlayerB move is 'Rock'
+    } elseif (($playerA_move == 'Scissors') && ($playerB_move  == 'Rock') ) {
+        echo "PlayerA move is Scissors \n";
+        echo "PlayerB move is Rock \n";
+        echo "player A loses \n";
+        echo "player B wins \n";
+        $playerB_Wins = true;
+# PlayerA move is 'Scissors' and PlayerB move is 'Paper'
+    } elseif (($playerA_move == 'Scissors') && ($playerB_move  == 'Paper') ) {
+        echo "PlayerA move is Scissors \n";
+        echo "PlayerB move is Paper \n";
+        echo "player A wins \n";
+        echo "player B loses \n";
+        $playerA_Wins = true;
+# PlayerA move is 'Paper' and PlayerB move is 'Rock'
+    } elseif (($playerA_move == 'Paper') && ($playerB_move  == 'Rock') ) {
+        echo "PlayerA move is Paper \n";
+        echo "PlayerB move is Rock \n";
+        echo "player A Wins \n";
+        $playerA_Wins = true;
+        echo "player B Loses \n";
+# PlayerA move is 'Paper' and PlayerB move is 'Scissors'
+    } elseif (($playerA_move == 'Paper') && ($playerB_move  == 'Scissors') ) {
+        echo "PlayerA move is Paper \n";
+        echo "PlayerB move is Scissors \n";
+        echo "player A loses \n";
+        echo "player B wins \n";
+        $playerB_Wins = true;
     }
 }
 #
-*/
+#
 #
 # The output of the game will be displayed 
-/* Dispkay the Results
-HERE
-Check if Player1Wins or Player2Wins!
-if PlayerWins == true {
-    echo "Player1 wins";
-    echo "Player2 loses";
-} else if Player2Wins == true {
-    echo "Player1 loses";
-    echo "Player2 wins";
+
+#Check if PlayerA_Wins or PlayerB_Wins!
+if ($playerA_Wins == true) {
+    echo "PlayerA wins";
+    echo "PlayerB loses";
+    $winner = "PlayerA";
+} else if ($playerB_Wins == true) {
+    echo "PlayerA loses";
+    echo "PlayerB wins";
+    $winner = "Player B";
 }
 
-*/
 
  ?>
