@@ -4,7 +4,6 @@
 <head>
     <title>Project 1</title>
     <meta charset='utf-8'>
-    <link href=data:, rel=icon>
     <link rel="stylesheet" href="styles.css">
 </head>
 
