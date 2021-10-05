@@ -13,3 +13,4 @@
 ## Outside resources
 + php.net documentation to define variables, if conditions, loops and random selection.
 ## Notes for instructor
++ In Project-1, the browser could be refreshed multiple times to test various scenarios.
