@@ -14,7 +14,7 @@
     <ul>
         <li>Two Players will throw randomly one of the moves - Rock, Paper or Scissors</li>
         <li>If the two moves are equal, the game is tied and players may need to throw another random move</li>
-        <li>If the two moves are not equal, the winner will be decided based on the game rules, as follows</li>
+        <li>If the two moves are not equal, the winner will be decided based on the game rules as follows</li>
         <li>Rock beats Scissors, Scissors beats Paper and Paper beats Rock</li>
         <li>Finally the game winner will be declared along with their moves!</li>
     </ul>
