@@ -48,12 +48,13 @@ else {
 #
 #
 # The output of the game will be displayed with winner information and each player's move
-
 #Check if PlayerA_Wins or PlayerB_Wins!
+#
 if ($playerA_Wins == true) {
     $winner = "Player A";
 } else if ($playerB_Wins == true) {
     $winner = "Player B";
 }
+#
 # include view to display the results of the game
 require 'index-view.php';
