@@ -1,1 +1,18 @@
-john, mary
+{
+    "1": {
+        "firstname": "John",
+        "middleinitial": "A",
+        "lastname": "Doe",
+        "age": 20,
+        "weight": 100,
+        "adult": true
+    },
+    "2": {
+        "firstname": "Jane",
+        "middleinitial": "B",
+        "lastname": "Doe",
+        "age": 22,
+        "weight": 120,
+        "adult": true
+    }
+}
