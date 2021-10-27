@@ -57,6 +57,7 @@ if ($player_Wins == true) {
 #
 # User Defined function to compare the player and computer moves
 #
+#
 function check_moves($player, $computer) {
 # Define variabel to track the winner if any, otherwise it will be a tie!
     $win = '';
@@ -88,5 +89,6 @@ function check_moves($player, $computer) {
     }
    return $win;
 }
+#
 # include view to display the results of the game
 require 'index-view.php';

@@ -10,6 +10,11 @@ body {
     color: blue;
   }
  
-  #results {
+  results {
     margin: 10px;
 }
+game {
+  margin: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+

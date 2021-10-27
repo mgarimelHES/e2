@@ -1,5 +1,5 @@
 # Project 2
-+ By: *Murthy Garimella*
++ By: Murthy Garimella
 + URL: http://e2p2.hesweb.me
 
 ## Outside resources
