@@ -1,5 +1,5 @@
 <?php
-require __DIR__.'../../vendor/autoload.php';
+require __DIR__.'../../../vendor/autoload.php';
 //require $_SERVER['DOCUMENT_ROOT'].'/samples/rock-paper-scissors/src/Game.php';
 //require 'Game.php';
 //require 'MyGame.php';
