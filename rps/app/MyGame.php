@@ -1,10 +1,11 @@
 <?php
 
-namespace APP;
+namespace App;
+use RPS\Game;
 
 class MyGame extends Game
 {
-    protected $moves = ['head', 'tails'];
+    protected $moves = ['heads', 'tails'];
 
     
     /**
