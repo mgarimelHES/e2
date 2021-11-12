@@ -8,5 +8,7 @@ return [
     # added a new method 'contact'
     '/contact' => ['AppController', 'contact'],
     # practice 'about' as per assignment 10
-    '/about' => ['AppController', 'about']
+    '/about' => ['AppController', 'about'],
+    '/products' => ['ProductsController', 'index'],
+    '/product' => ['ProductsController', 'show']
 ];
