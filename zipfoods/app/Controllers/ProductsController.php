@@ -46,7 +46,9 @@ class ProductsController extends Controller {
      if (is_null($product)) {
       
       #dump('sku not found');
-      return $this->app->view('errors/404');
+     // return $this->app->view('errors/404');
+     return $this->app->view('products/missing');
+
 
      }
 
