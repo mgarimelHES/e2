@@ -39,4 +39,10 @@ class AppController extends Controller
         ]);
         
     }
+
+    public function test() 
+    {
+        //return 'This is the contact page ....';
+        return $this->app->view('x/y/z');
+    }
 }

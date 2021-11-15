@@ -2,6 +2,8 @@
 
 # Define the routes of your application
 
+use App\Controllers\AppController;
+
 return [
     # Ex: The path `/` will trigger the `index` method within the `AppController`
     '/' => ['AppController', 'index'],
@@ -10,5 +12,6 @@ return [
     # practice 'about' as per assignment 10
     '/about' => ['AppController', 'about'],
     '/products' => ['ProductsController', 'index'],
-    '/product' => ['ProductsController', 'show']
+    '/product' => ['ProductsController', 'show'],
+    '/test' =>['AppController', 'test']
 ];
