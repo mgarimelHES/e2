@@ -1,15 +1,13 @@
 @extends('templates/master')
 
 @section('title')
-    {{ $product['name'] }}
+    Product Not Found
 @endsection
 
 @section('content')
-    <div id='product-show'>
-        <h2>Product Not Found</h2>
-        <h3>Sorry, we were not able to find the product you are looking for</h3>
 
-    </div>
+    <h2>Product Not Found</h2>
+    <p>Sorry, we were not able to find the product you are looking for</p>
 
     <a href='/products'>&larr; Check out our other products</a>
 

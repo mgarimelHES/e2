@@ -13,5 +13,6 @@ return [
     '/about' => ['AppController', 'about'],
     '/products' => ['ProductsController', 'index'],
     '/product' => ['ProductsController', 'show'],
-    '/test' =>['AppController', 'test']
+    '/test' =>['AppController', 'test'],
+    '/products/save-review' => ['ProductsController', 'saveReview']
 ];

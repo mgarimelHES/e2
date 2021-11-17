@@ -36,6 +36,12 @@ class ProductsController extends Controller {
      
      $sku = $this->app->param('sku');
 
+     if(is_null($sku)) {
+
+         $this->app->redirect('/products');
+
+     }
+
     # return all products using  construct method
     
     #get using get sku
@@ -49,10 +55,49 @@ class ProductsController extends Controller {
      // return $this->app->view('errors/404');
      return $this->app->view('products/missing');
 
-
      }
 
-    return $this->app->view('products/show', ['product' => $product]);
+     $reviewSaved = $this->app->old('reviewSaved');
+
+    return $this->app->view('products/show', [
+      'product' => $product,
+      'reviewSaved' => $reviewSaved
+    ]);
+
+    }
+
+    public function saveReview() 
+    {
+
+     // return 'you are in saveReview ....';
+     # Validation comes here
+
+       $this->app->validate([
+        'sku' => 'required',
+        'name' => 'required', # Note how multiple validation rules are separated by a |
+        'review' => 'required|minLength:150' # Note that some rules accept paramaters, which follow a :
+      ]);
+
+
+# If the above validation fails, the user is redirected back to where they came from (ex- /prodict) automatically
+# None of the code below wil be executed!
+
+     /* dump($this->app->input('sku'));
+     dump($this->app->input('name'));
+     dump($this->app->input('review')); */
+
+     $sku = $this->app->input('sku');
+     $name = $this->app->input('name');
+     $review = $this->app->input('review');
+
+     
+
+     
+     #Todo: Persist review to the database here
+
+     return $this->app->redirect('/product?sku=' . $sku, ['reviewSaved'=>true]);
+
+
 
     }
 
