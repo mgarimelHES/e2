@@ -6,22 +6,24 @@ use App\Products;
 
 class ProductsController extends Controller {
 
-  private $productsObj;
-  
+  //private $productsObj;
+ 
+  /*
   public function __construct($app)
     {
       parent::__construct($app);
       $this->productsObj = new Products($this->app->path('/database/products.json'));
 
     }
- 
+ */
     public function index ()
     {
       //  use construct to get all products
 
       //dump($productsObj);
 
-      $products = $this->productsObj->getAll();
+     // $products = $this->productsObj->getAll();
+        $products = $this->app->db()->all('products');
 
       //dd($products);
 
@@ -45,17 +47,24 @@ class ProductsController extends Controller {
     # return all products using  construct method
     
     #get using get sku
-    $product = $this->productsObj->getBySku($sku);
+    #$product = $this->productsObj->getBySku($sku);
+     $productQuery = $this->app->db()->findByColumn('products', 'sku', '=', $sku);
     //dump($product);
+    //dd($productQuery);
 
     # if the sku not found
-     if (is_null($product)) {
+    # if (is_null($product)) {
+      if (empty($productQuery)) {
       
       #dump('sku not found');
      // return $this->app->view('errors/404');
      return $this->app->view('products/missing');
+    } else {
+      $product = $productQuery[0];
 
-     }
+    }
+
+   #   dd($product);
 
      $reviewSaved = $this->app->old('reviewSaved');
 
@@ -91,14 +100,93 @@ class ProductsController extends Controller {
      $review = $this->app->input('review');
 
      
+    # Save review data process here
+    # Set up all the variables we need to make a connection
+    #$host = $this->app->env('DB_HOST');
+    #$database = $this->app->env('DB_NAME');
+    #$username = $this->app->env('DB_USERNAME');
+    #$password = $this->app->env('DB_PASSWORD');
+    
+    # DSN (Data Source Name) string
+    # contains the information required to connect to the database
+    #$dsn = "mysql:host=$host;dbname=$database;charset=utf8mb4";
+  /*
+    # Driver-specific connection options
+    $options = [
+        \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+        \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
+        \PDO::ATTR_EMULATE_PREPARES => false,
+    ];
 
-     
+    try {
+        # Create a PDO instance representing a connection to a database
+        $pdo = new \PDO($dsn, $username, $password, $options);
+    } catch (\PDOException $e) {
+        throw new \PDOException($e->getMessage(), (int)$e->getCode());
+    }
+
+    dump('Connection successful!');
+    */
+    # insert reviews record
+    /*
+    $sqlTemplate = "INSERT INTO reviews (name, sku, review) 
+                    VALUES (:name, :sku, :review)";
+
+    $values = [
+                'name' => $this->app->input('name'),
+                'sku' => $this->app->input('sku'),
+                'review' => $this->app->input('review'),
+              ];
+
+    $statement = $pdo->prepare($sqlTemplate);
+    $statement->execute($values);
+    */
+
+    $this->app->db()->insert('reviews', [
+      'sku' => $sku,
+      'name' => $name,
+      'review' => $review
+    ]);
+
      #Todo: Persist review to the database here
 
      return $this->app->redirect('/product?sku=' . $sku, ['reviewSaved'=>true]);
+}
 
+public function new() 
+{
+  dump("I am new");
+   # Validation comes here
+/*
+   $this->app->validate([
+    'sku' => 'required',
+    'name' => 'required', # Note how multiple validation rules are separated by a |
+    'description' => 'required|minLength:150', # Note that some rules accept paramaters, which follow a :
+    'price' => 'required',
+    'available' => 'required',
+    'weight' => 'required',
+    'perishable' => 'required'
+  ]);
+*/
+  # input 
+  $sku = $this->app->input('sku');
+  $name = $this->app->input('name');
+  $description = $this->app->input('description');
+  $price = $this->app->input('price');
+  $available = $this->app->input('available');
+  $weight = $this->app->input('weight');
+  $persishable = $this->app->input('perishable');
 
+# insert into table
+$this->app->db()->insert('products', [
+  'sku' => $sku,
+  'name' => $name,
+  'description' => $description,
+  'price' => $price,
+  'available' => $available,
+  'weight' => $weight,
+  'perishable' => $persishable
+]);
 
-    }
-
+}
 }
