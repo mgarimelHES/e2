@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Products;
 
+
+
 class ProductsController extends Controller {
 
   //private $productsObj;
@@ -67,10 +69,14 @@ class ProductsController extends Controller {
    #   dd($product);
 
      $reviewSaved = $this->app->old('reviewSaved');
+     
+     $reviews = $this->app->db()->findByColumn('reviews', 'product_id', '=', $product['id']);
+     
 
     return $this->app->view('products/show', [
       'product' => $product,
-      'reviewSaved' => $reviewSaved
+      'reviewSaved' => $reviewSaved,
+      'reviews' => $reviews
     ]);
 
     }
@@ -155,37 +161,64 @@ class ProductsController extends Controller {
 
 public function new() 
 {
-  dump("I am new");
-   # Validation comes here
+  
+  $newSaved = $this->app->old('newSaved');
+  $sku = $this->app->old('sku');
+  
 /*
-   $this->app->validate([
-    'sku' => 'required',
-    'name' => 'required', # Note how multiple validation rules are separated by a |
-    'description' => 'required|minLength:150', # Note that some rules accept paramaters, which follow a :
-    'price' => 'required',
-    'available' => 'required',
-    'weight' => 'required',
-    'perishable' => 'required'
-  ]);
-*/
-  # input 
-  $sku = $this->app->input('sku');
-  $name = $this->app->input('name');
-  $description = $this->app->input('description');
-  $price = $this->app->input('price');
-  $available = $this->app->input('available');
-  $weight = $this->app->input('weight');
-  $persishable = $this->app->input('perishable');
-
 # insert into table
 $this->app->db()->insert('products', [
   'sku' => $sku,
   'name' => $name,
   'description' => $description,
-  'price' => $price,
-  'available' => $available,
-  'weight' => $weight,
-  'perishable' => $persishable
+  'price' => $price
+ # 'available' => $available,
+ # 'weight' => $weight,
+ # 'perishable' => $persishable
+]);
+*/
+#Todo: Persist review to the database here
+
+return $this->app->view('products/new', [
+  'newSaved'=> $newSaved,
+  'sku' => $sku
+]);
+
+}
+
+public function save() 
+{
+
+ # Validation comes here!
+
+ $this->app->validate([
+    'sku' => 'required|alphaNumericDash', # Note how multiple validation rules are separated by a |
+    'name' => 'required', 
+    'description' => 'required', 
+    'price' => 'required|numeric',
+    'available' => 'required|digit',
+    'weight' => 'required|numeric',
+ #  'perishable' => 'required'
+ ]);
+ 
+#Todo: Persist review to the database here
+/*
+ $newProduct = [
+   'name' => $this->app->input('name'),
+   'sku' = > $this->app->input('sku'),
+   'description' => $this->app->input('description'),
+   'price' => $this->app->input('price'),
+   'weight' => $this->app->input('weight'),
+   'available' => $this->app->input('available')
+ ];
+  $this->app->db()->insert('products', $newProduct);
+*/
+
+$this->app->db()->insert('products', $this->app->inputAll());
+
+return $this->app->redirect('/products/new', [
+  'newSaved'=> true,
+  'sku' => $this->app->input('sku')
 ]);
 
 }
