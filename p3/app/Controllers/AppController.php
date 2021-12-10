@@ -41,7 +41,7 @@ class AppController extends Controller
         dump($winner);
     }
 # test
-    function callMe($p, $c)
+    public function callMe($p, $c)
     {
         dump('I am in call me');
     }
