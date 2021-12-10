@@ -34,16 +34,22 @@ class AppController extends Controller
         #
         # Call User defined function to check the both moves to decide the winner if any
         #
-        $winner = check_moves($player_move, $computer_move);
+        //$winner = check_moves($player_move, $computer_move);
+        
+        $winner = callMe($player_move, $computer_move);
         #  
         dump($winner);
     }
-
-    #
+# test
+    function callMe($p, $c)
+    {
+        dump('I am in call me');
+    }
+#
 # User Defined function to compare the player and computer moves
 #
 #
-    public function check_moves($player, $computer)
+     function check_moves($player, $computer)
     {
     # Define variabel to track the winner if any, otherwise it will be a tie!
         $win = '';
