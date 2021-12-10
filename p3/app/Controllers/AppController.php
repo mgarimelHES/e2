@@ -49,6 +49,7 @@ class AppController extends Controller
 # User Defined function to compare the player and computer moves
 #
 #
+/*
      function check_moves($player, $computer)
     {
     # Define variabel to track the winner if any, otherwise it will be a tie!
@@ -82,4 +83,5 @@ class AppController extends Controller
        return $win;
     }
     #
+    */
 }
