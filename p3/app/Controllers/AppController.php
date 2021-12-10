@@ -8,10 +8,15 @@ class AppController extends Controller
      */
     public function index()
     {
-        $welcomes = ['Welcome', 'Aloha', 'Welkom', 'Bienvenidos', 'Bienvenu', 'Welkomma'];
         
+        $selection = $this->app->old('selection');
+        $computer_move = $this->app->old('computer_move');
+        $winner = $this->app->old('winner');
+
         return $this->app->view('index', [
-            'welcome' => $welcomes[array_rand($welcomes)]
+            'selection' => $selection,
+            'computer_move' => $computer_move,
+            'winner' => $winner
         ]);
     }
 
@@ -29,27 +34,24 @@ class AppController extends Controller
         #
         $computer_move = ['Rock', 'Paper', 'Scissors'][rand(0,2)];
         #
-        dump($player_move);
-        dump($computer_move);
+        //dump($player_move);
+        //dump($computer_move);
         #
         # Call User defined function to check the both moves to decide the winner if any
         #
-        //$winner = check_moves($player_move, $computer_move);
+        $winner = $this->check_moves($player_move, $computer_move);
         
-        $winner = callMe();
-        #  
-        dump($winner);
+        # Persist the game outcome to a database here!
+        # todo
+
+        return $this->app->redirect('/', ['selection' => $selection, 'computer_move' => $computer_move, 'winner' => $winner]);
     }
-# test
-    public function callMe()
-    {
-        dump('I am in call me');
-    }
+
 #
 # User Defined function to compare the player and computer moves
 #
 #
-/*
+
      function check_moves($player, $computer)
     {
     # Define variabel to track the winner if any, otherwise it will be a tie!
@@ -80,8 +82,17 @@ class AppController extends Controller
         } elseif (($player == 'Paper') && ($computer  == 'Scissors') ) {
             $win = 'Computer';
         }
-       return $win;
+        return $win;
     }
     #
-    */
+    
+    public function history() {
+        
+        return $this->app->view('history');
+    }
+
+    public function round() {
+        
+        return $this->app->view('round');
+    }
 }
