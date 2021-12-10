@@ -36,12 +36,12 @@ class AppController extends Controller
         #
         //$winner = check_moves($player_move, $computer_move);
         
-        $winner = callMe($player_move, $computer_move);
+        $winner = callMe();
         #  
         dump($winner);
     }
 # test
-    public function callMe($p, $c)
+    public function callMe()
     {
         dump('I am in call me');
     }
