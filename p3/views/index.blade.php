@@ -11,7 +11,7 @@
     <form method='POST' action='/process'>
         <input type='radio' name='selection' value='Rock' id='rock'><label for='rock'>Rock</label>
         <input type='radio' name='selection' value='Paper' id='paper'><label for='paper'>Paper</label>
-        <input type='radio' name='selection' value='Scisoors' id='scissors'><label for='scissors'>Scissors</label>
+        <input type='radio' name='selection' value='Scissors' id='scissors'><label for='scissors'>Scissors</label>
 
         <button type='submit'>Let's Play!</button>
 
