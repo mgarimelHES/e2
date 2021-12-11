@@ -26,6 +26,10 @@
     @endif
 
     @if ($selection)
+        <link href='/css/p3.css' rel='stylesheet'>
+
+        <p><span class='outcome'>Game Results</span></p>
+
         <div class='results'>
             <p>Your selection is {{ $selection }} and the computer move is {{ $computer_move }}.</p>
 

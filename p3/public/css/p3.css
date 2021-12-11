@@ -1,10 +1,10 @@
-#logo {
-    width:300px;
-}
-
 .results {
     font-weight: bold;
     margin: 20px;
+}
+
+.outcome {
+    color: brown;
 }
 
 .tie {
