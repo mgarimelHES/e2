@@ -6,5 +6,11 @@
 
 @section('content')
     <h2>Round Detail</h2>
+    <ul>
+        <li>Round Id: {{ $round['id'] }} </li>
+        <li>Player's Selection: {{ $round['selection'] }} </li>
+        <li>Winner is: {{ $round['winner'] }} </li>
+        <li>TimeStamp: {{ $round['timestamp'] }} </li>
+    </ul>
     <a href='/history'>Back to the History</a>
 @endsection

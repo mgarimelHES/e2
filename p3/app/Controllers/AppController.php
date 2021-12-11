@@ -20,9 +20,13 @@ class AppController extends Controller
         ]);
     }
 
-    # 'Process method to validate the game rules
+    # 'Process method to run the game using the game rules 
     public function process() 
     {
+        #  Simple Validation as a part of the input or setting a default value
+        $this->app->validate([
+            'selection' => 'required'
+        ]);
         
         //dump($this->app->inputAll());
         $selection = $this->app->input('selection');     # Get player pick
@@ -34,15 +38,18 @@ class AppController extends Controller
         #
         $computer_move = ['Rock', 'Paper', 'Scissors'][rand(0,2)];
         #
-        //dump($player_move);
-        //dump($computer_move);
-        #
         # Call User defined function to check the both moves to decide the winner if any
         #
         $winner = $this->check_moves($player_move, $computer_move);
         
         # Persist the game outcome to a database here!
         # todo
+        $this->app->db()->insert('rounds', [
+            'selection' => $selection,
+            'winner' => $winner,
+            'timestamp' => date('Y-m-d H:i:s')
+
+        ]);
 
         return $this->app->redirect('/', ['selection' => $selection, 'computer_move' => $computer_move, 'winner' => $winner]);
     }
@@ -88,11 +95,19 @@ class AppController extends Controller
     
     public function history() {
         
-        return $this->app->view('history');
+        $rounds = $this->app->db()->all('rounds');
+        //dump($rounds);
+
+        return $this->app->view('history',['rounds' => $rounds]);
     }
 
     public function round() {
-        
-        return $this->app->view('round');
+
+        $id = $this->app->param('id');
+
+        $round = $this->app->db()->findById('rounds', $id);
+        //dump($round);
+
+        return $this->app->view('round', ['round' => $round]);
     }
 }

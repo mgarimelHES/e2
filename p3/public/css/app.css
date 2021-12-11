@@ -7,14 +7,13 @@
     margin: 20px;
 }
 
+.tie {
+    color: blue;
+}
 .won {
     color: green;
 }
 
 .lost {
     color: red;
-}
-
-.tie {
-    color: yellow;
 }

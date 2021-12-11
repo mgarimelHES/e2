@@ -17,20 +17,29 @@
 
     </form>
 
+    @if ($app->errorsExist())
+        <ul class='error alert alert-danger'>
+            @foreach ($app->errors() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
+
     @if ($selection)
         <div class='results'>
-            The computer move is {{ $computer_move }}, your selection is {{ $selection }}
+            <p>Your selection is {{ $selection }} and the computer move is {{ $computer_move }}.</p>
 
             @if ($winner == 'Tied')
                 <span class='tie'>Game is Tied!! Do you want to play again?</span>
             @elseif ($winner == 'Player')
-                <span class='won'>Congratulations! You won the game!</span>
-            @else
+                <span class='won'>Congratulations! You won the game!!</span>
+            @elseif ($winner == 'Computer')
                 <span class='lost'>Sorry, you lost the game. Please try again.</span>
             @endif
         </div>
 
     @endif
 
+    <a href='/history'>Game History</a>
 
 @endsection
